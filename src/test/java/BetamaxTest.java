@@ -100,4 +100,17 @@ public class BetamaxTest {
         ClientResponse clientResponse = resource.get(ClientResponse.class);
         assertThat(clientResponse.getClientResponseStatus(), is(ClientResponse.Status.CREATED));
     }
+
+    @Betamax(tape = "cartrawler-jersey-response-recording",
+            mode = TapeMode.WRITE_ONLY)
+    @Test
+    public void testPostToHttpsClient() throws Exception {
+        RestResourceSupplier supplier = new DefaultRestResourceSupplier(new URI(CARTRAWLER));
+        WebResource.Builder resource = supplier.get()
+                .type(MediaType.APPLICATION_JSON_TYPE)
+                .accept(MediaType.APPLICATION_JSON_TYPE);
+
+        ClientResponse clientResponse = resource.post(ClientResponse.class);
+        assertThat(clientResponse.getClientResponseStatus(), is(ClientResponse.Status.OK));
+    }
 }
