@@ -10,10 +10,10 @@
 
     <dependencies>
         <dependency>
-            <scope>test</scope>
             <groupId>co.freeside</groupId>
             <artifactId>betamax</artifactId>
             <version>1.1.2</version>
+            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.codehaus.groovy</groupId>
